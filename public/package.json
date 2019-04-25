@@ -1,0 +1,33 @@
+{
+  "name": "classic",
+  "version": "1.0.0",
+  "description": "v1.0 of classic, final project for CSC337",
+  "main": "classic.js",
+  "dependencies": {
+    "client-sessions": "^0.8.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "fs": "^0.0.1-security",
+    "mysql": "^2.17.1",
+    "require": "^2.4.20"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GrimThor3/CSC337_Classic.git"
+  },
+  "keywords": [
+    "require",
+    "express",
+    "fs"
+  ],
+  "author": "Rafael Jeffery-Vazquez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GrimThor3/CSC337_Classic/issues"
+  },
+  "homepage": "https://github.com/GrimThor3/CSC337_Classic#readme"
+}

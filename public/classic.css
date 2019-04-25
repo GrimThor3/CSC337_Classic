@@ -1,0 +1,65 @@
+body {
+	background-color: black;
+	font-family: sans-serif;
+}
+
+#page {
+	display: block;
+	background-color: white;
+	width: 90%;
+	margin-top: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 0px;
+	border-radius: 8px;
+	text-align: center;
+}
+
+#login {
+	display: none;
+	text-align: center;
+}
+
+#signup {
+	text-align: center;
+}
+
+#login input, #signup input {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#hasLoggedIn {
+	display: none;
+}
+
+#login_error, #sigin_error {
+	font-size: 12pt;
+	color: red;
+	margin: 2px;
+}
+
+#nav {
+	width: 100%;
+	border-bottom: 2px solid black;
+}
+
+#profile, #status {
+	display: block;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#status {
+	border: 2px solid black;
+	padding: 0px;
+	width: 40%;
+	margin-bottom: 20px;
+}
+
+#profilePic {
+	border: 2px solid red;
+	padding: 1px;
+}

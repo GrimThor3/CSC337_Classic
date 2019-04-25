@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="classic.css" />
+		<script type="text/javascript" src="classic.js"></script>
+		<title>Classic</title>
+	</head>
+	<body>
+		<div id="page">
+			<div id="login">
+				<h1>Log In</h1>
+				<input type="text" id="li_email" pattern=".*@.*(\.com|\.net|\.edu)" value="Email"/>
+				<input type="text" id="li_password" value="Password">
+				<button id="login_button">Log In</button>
+				<p id="login_error"></p>
+				<h2>Don't Have An Account?<h2>
+				<button id="switch_signup">Sign Up</button>
+			</div>
+			<div id="signup">
+				<h1>Sign Up</h1>
+				<input type="text" id="su_fname" value="First Name"/>
+				<input type="text" id="su_lname" value="Last Name"/>
+				<input type="text" id="su_email" pattern=".*@.*(\.com|\.net|\.edu)" value="Email"/>
+				<input type="text" id="su_password" value="Password"/>
+				<button id="signup_button">Sign Up</button>
+				<p id="signin_error"></p>
+				<h2>Already Have An Account?<h2>
+				<button id="switch_login">Login</button>
+			</div>
+			<div id="hasLoggedIn">
+				<div id="nav">
+					<button id="home">Home</button>
+					<input type="text" id="search" value="Search for friends via email">
+					<button id="searchButton">Search!</button>
+					<button id="Log off">Log off</button>
+				</div>
+				<div id="profile">
+					<p id="Name"></p>
+					<div id="imgBorder">
+						<img src="img/noimg.png" id="profilePic" alt="ProfilePic"/>
+					</div>
+					<div id="status">
+					</div>
+				</div>
+				<div id="other">
+
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
