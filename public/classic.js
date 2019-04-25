@@ -18,16 +18,8 @@ window.onload = (function() {
 		let email = document.getElementById("li_email").value;
 		let password = document.getElementById("li_password").value;
 
-		let port = process.env.PORT || 3000;
-		let url = "";
-		if (port === 3000) {
-			url = "http://localhost:3000";
-		} else {
-			url = "https://app.herokuapp.com/";
-		}
-
-		url = url + "?mode=login&email=" + email + "&password=" + password;
-		
+		let url = "https://app.herokuapp.com/?mode=login&email=" + email + "&password=" + password;
+		console.log(url);
 		fetch(url)
 			.then(checkStatus)
 			.then(function(responseText) {
@@ -57,15 +49,7 @@ window.onload = (function() {
 		let email = document.getElementById("su_email").value;
 		let password = document.getElementById("su_password").value;
 
-		let port = process.env.PORT || 3000;
-		let url = "";
-		if (port === 3000) {
-			url = "http://localhost:3000";
-		} else {
-			url = "https://app.herokuapp.com/";
-		}
-
-		url = url + "?mode=signup&name=" + fname + "_" + 
+		let url = "https://app.herokuapp.com/?mode=signup&name=" + fname + "_" + 
 			lname + "&email=" + email + "&password=" + password;
 		
 		fetch(url)
@@ -100,15 +84,7 @@ window.onload = (function() {
 		signupPage.style.display = 'None';
 		page.style.display = 'Block';
 
-		let port = process.env.PORT || 3000;
-		let url = "";
-		if (port === 3000) {
-			url = "http://localhost:3000";
-		} else {
-			url = "https://app.herokuapp.com/";
-		}
-
-		url = url + "http://localhost:3000?mode=getuser&email=" + email;
+		let url = "https://app.herokuapp.com/?mode=getuser&email=" + email;
 		console.log(url);
 		fetch(url)
 			.then(checkStatus)
