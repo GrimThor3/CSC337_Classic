@@ -14,6 +14,7 @@ let bodyParser = require('body-parser');
 app.use(express.static('public'));
 console.log('Web service started');
 
+app.set('port', process.env.PORT || 3000);
 
 app.get('/', function (req, res) {
 	res.header("Access-Control-Allow-Origin", "*");
@@ -97,4 +98,4 @@ app.get('/', function (req, res) {
 	}
 });
 
-app.listen(process.env.PORT || 3000);
+app.listen(app.get('port'));
