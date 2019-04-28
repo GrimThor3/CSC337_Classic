@@ -1,6 +1,8 @@
 "use strict";
 
 window.onload = (function() {
+	let currentEmail = "";
+
 	document.getElementById("login_button").onclick = login;
 	document.getElementById("switch_signup").onclick = switchToSignUp;
 	document.getElementById("signup_button").onclick = signup;
@@ -14,10 +16,15 @@ window.onload = (function() {
 	});
 	document.getElementById("Log off").onclick = switchToSignUp;
 	document.getElementById("sendStatus").onclick = updateStatus;
+	document.getElementById("home").onclick = (function() {
+		loadUser(currentEmail);
+	});
 
 	function login() {
 		let email = document.getElementById("li_email").value;
 		let password = document.getElementById("li_password").value;
+
+		currentEmail = email;
 
 		let url = "https://app.herokuapp.com/?mode=login&email=" + email + "&password=" + password;
 		console.log(url);
@@ -41,7 +48,7 @@ window.onload = (function() {
 
 		loginPage.style.display = 'None';
 		signupPage.style.display = 'Block';
-		page.style.dispaly = 'None';
+		page.style.display = 'None';
 	}
 
 	function signup() {
@@ -49,6 +56,8 @@ window.onload = (function() {
 		let lname = document.getElementById("su_lname").value;
 		let email = document.getElementById("su_email").value;
 		let password = document.getElementById("su_password").value;
+
+		currentEmail = email;
 
 		let url = "https://app.herokuapp.com/?mode=signup&name=" + fname + "_" + 
 			lname + "&email=" + email + "&password=" + password;
@@ -73,7 +82,7 @@ window.onload = (function() {
 
 		loginPage.style.display = 'Block';
 		signupPage.style.display = 'None';
-		page.style.dispaly = 'None';
+		page.style.display = 'None';
 	}
 
 	function loadUser(email) {
@@ -92,24 +101,25 @@ window.onload = (function() {
 			.then(function(responseText) {
 				if (responseText == "Incorrect creditentials") {
 					document.getElementById("other").innerHTML = "User not found";
+				} else {
+					let json = JSON.parse(responseText);
+
+					let name = json['name'].replace('_', ' ');
+					console.log("Name: " + name);
+					document.getElementById("Name").innerHTML = name;
+
+					console.log("Img Src: " + json['imgsrc']);
+					document.getElementById("profilePic").src = json['imgsrc'];
+
+					let status = json['status'];
+					console.log("Status: " + status);
+
+					if (status === '') {
+						status = '~ No status has been posted ~';
+					}
+
+					document.getElementById("status").innerHTML = status;
 				}
-				let json = JSON.parse(responseText);
-
-				let name = json['name'].replace('_', ' ');
-				console.log("Name: " + name);
-				document.getElementById("Name").innerHTML = name;
-
-				console.log("Img Src: " + json['imgsrc']);
-				document.getElementById("profilePic").src = json['imgsrc'];
-
-				let status = json['status'];
-				console.log("Status: " + status);
-
-				if (status === '') {
-					status = '~ No status has been posted ~';
-				}
-
-				document.getElementById("status").innerHTML = status;
 			})
 			.catch(function(error) {
 				console.log(error);
@@ -117,7 +127,12 @@ window.onload = (function() {
 	}
 
 	function updateStatus() {
-		let status = document.getElementById("newStatus").value;
+		let newStatus = document.getElementById("newStatus").value;
+
+		let message = {
+			email : currentEmail,
+			status : newStatus
+		};
 
 		let fetchOptions = {
 			method : 'POST',
@@ -128,10 +143,13 @@ window.onload = (function() {
 			body : status
 		};
 		
-		let url = "https://app.herokuapp.com/?mode=status&email=" + email;
+		let url = "https://app.herokuapp.com/?mode=status";
 
 		fetch(url, fetchOptions)
 			.then(checkStatus)
+			.then(function(responseText) {
+				document.getElementById("status").innerHTML = responseText;
+			})
 			.catch(function(error) {
 				console.log(error);
 			});
