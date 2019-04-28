@@ -29,7 +29,7 @@ app.get('/', function (req, res) {
 		let email = req.query.email;
 		let password = req.query.password;
 
-		let dir = 'users/' + escape(email);
+		let dir = 'public/users/' + escape(email);
 
 		if (!fs.existsSync(dir)) {
 			fs.mkdir(dir, { recursive: true }, function(err) {
@@ -64,7 +64,7 @@ app.get('/', function (req, res) {
 			if (fileContents[0].split(": ")[1] == password) {
 				let data = {};
 				data["image"] = fileContents[1].split(": ")[1];
-				let statusPath = 'users/' + escape(email) + '/status.txt';
+				let statusPath = 'public/users/' + escape(email) + '/status.txt';
 				data["status"] = fs.readFile(statusPath, function(err) {
 					if (err) {
 						throw err;
