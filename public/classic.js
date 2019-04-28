@@ -164,7 +164,7 @@ window.onload = (function() {
 			return Promise.reject(new Error(response.status + ": " + "There was no data to display"))
 		} else {
 			console.log(response.text());
-			return Promose.reject(new Error(reponse.status + ": " + reponse.statusText))
+			return Promise.reject(new Error(reponse.status + ": " + reponse.statusText))
 		}
 	}
 });
