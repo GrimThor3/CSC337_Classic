@@ -22,7 +22,7 @@ app.set('port', process.env.PORT || 3000);
 app.get('/', function (req, res) {
 	res.header("Access-Control-Allow-Origin", "*");
 	console.log(req);
-	let mode = req.mode;
+	let mode = req.query.mode;
 	console.log("Mode: " + mode);
 	if (mode === "signup") {
 		let name = req.query.name;
