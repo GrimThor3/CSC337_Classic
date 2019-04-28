@@ -101,4 +101,16 @@ app.get('/', function (req, res) {
 	}
 });
 
+app.post('/', jsonParser, function(req, res) {
+	res.header("Access-Control-ALlow-Origin", "*");
+	res.header("Access-Control-Allow-Headers", 
+		"Origin, X-Requested-With, Content-Typed, Accept");
+	
+	let email = req.body.email;
+	let status = req.body.name;
+	let statusFile = 'users/' + escape(email)
+	fs.writeFile()
+
+});
+
 app.listen(app.get('port'));
