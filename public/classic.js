@@ -13,12 +13,13 @@ window.onload = (function() {
 		}
 	});
 	document.getElementById("Log off").onclick = switchToSignUp;
+	document.getElementById("sendStatus").onclick = updateStatus;
 
 	function login() {
 		let email = document.getElementById("li_email").value;
 		let password = document.getElementById("li_password").value;
 
-		let url = "https://csc337-classic.herokuapp.com?mode=login&email=" + email + "&password=" + password;
+		let url = "https://app.herokuapp.com/?mode=login&email=" + email + "&password=" + password;
 		console.log(url);
 		fetch(url)
 			.then(checkStatus)
@@ -49,7 +50,7 @@ window.onload = (function() {
 		let email = document.getElementById("su_email").value;
 		let password = document.getElementById("su_password").value;
 
-		let url = "https://csc337-classic.herokuapp.com?mode=signup&name=" + fname + "_" + 
+		let url = "https://app.herokuapp.com/?mode=signup&name=" + fname + "_" + 
 			lname + "&email=" + email + "&password=" + password;
 		
 		fetch(url)
@@ -84,7 +85,7 @@ window.onload = (function() {
 		signupPage.style.display = 'None';
 		page.style.display = 'Block';
 
-		let url = "https://csc337-classic.herokuapp.com?mode=getuser&email=" + email;
+		let url = "https://app.herokuapp.com/?mode=getuser&email=" + email;
 		console.log(url);
 		fetch(url)
 			.then(checkStatus)
@@ -112,9 +113,28 @@ window.onload = (function() {
 			})
 			.catch(function(error) {
 				console.log(error);
-				return;
-
 			})
+	}
+
+	function updateStatus() {
+		let status = document.getElementById("newStatus").value;
+
+		let fetchOptions = {
+			method : 'POST',
+			headers: {
+				'Accept': 'application/json',
+				'Content-Type': 'application/json'
+			},
+			body : status
+		};
+		
+		let url = "https://app.herokuapp.com/?mode=status&email=" + email;
+
+		fetch(url, fetchOptions)
+			.then(checkStatus)
+			.catch(function(error) {
+				console.log(error);
+			});
 	}
 
 	function checkStatus(response) {
@@ -126,7 +146,7 @@ window.onload = (function() {
 			return Promise.reject(new Error(response.status + ": " + "There was no data to display"))
 		} else {
 			console.log(response.text());
-			return Promise.reject(new Error(reponse.status + ": " + reponse.statusText))
+			return Promose.reject(new Error(reponse.status + ": " + reponse.statusText))
 		}
 	}
 });
