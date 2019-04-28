@@ -26,7 +26,7 @@ window.onload = (function() {
 
 		currentEmail = email;
 
-		let url = "https://app.herokuapp.com?mode=login&email=" + email + "&password=" + password;
+		let url = "https://csc337-classic.herokuapp.com?mode=login&email=" + email + "&password=" + password;
 		console.log(url);
 		fetch(url)
 			.then(checkStatus)
@@ -59,7 +59,7 @@ window.onload = (function() {
 
 		currentEmail = email;
 
-		let url = "https://app.herokuapp.com?mode=signup&name=" + fname + "_" + 
+		let url = "https://csc337-classic.herokuapp.com?mode=signup&name=" + fname + "_" + 
 			lname + "&email=" + email + "&password=" + password;
 		
 		fetch(url)
@@ -94,7 +94,7 @@ window.onload = (function() {
 		signupPage.style.display = 'None';
 		page.style.display = 'Block';
 
-		let url = "https://app.herokuapp.com?mode=getuser&email=" + email;
+		let url = "https://csc337-classic.herokuapp.com?mode=getuser&email=" + email;
 		console.log(url);
 		fetch(url)
 			.then(checkStatus)
@@ -143,7 +143,7 @@ window.onload = (function() {
 			body : status
 		};
 		
-		let url = "https://app.herokuapp.com?mode=status";
+		let url = "https://csc337-classic.herokuapp.com?mode=status";
 
 		fetch(url, fetchOptions)
 			.then(checkStatus)
