@@ -27,12 +27,13 @@
     "require",
     "express",
     "fs",
-	"process"
+	  "process",
+	  "body-parser"
   ],
   "author": "Rafael Jeffery-Vazquez",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/GrimThor3/CSC337_Classic/issues"
   },
-  "homepage": "https://github.com/GrimThor3/CSC337_Classic#readme"
+  "homepage": "https://github.com/GrimThor3/CSC337_Classic/classic_service.js"
 }
