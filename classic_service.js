@@ -113,7 +113,7 @@ app.post('/', jsonParser, function(req, res) {
 		if (err) {
 			throw err;
 		}
-	});
+	}));
 
 });
 
