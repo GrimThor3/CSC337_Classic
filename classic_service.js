@@ -108,8 +108,12 @@ app.post('/', jsonParser, function(req, res) {
 	
 	let email = req.body.email;
 	let status = req.body.name;
-	let statusFile = 'public/users/' + escape(email)
-	fs.writeFile()
+	let statusFile = 'public/users/' + escape(email) + "/status.txt";
+	fs.writeFile(statusFile, status, 'utf8', (function(err) {
+		if (err) {
+			throw err;
+		}
+	});
 
 });
 
