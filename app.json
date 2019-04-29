@@ -2,6 +2,5 @@
   "name": "classic.js",
   "description": "client-side code",
   "repository": "https://github.com/GrimThor3/CSC337_Classic.git",
-  "logo": "https://rawgit.com/heroku/node-js-sample/master/public/node.svg",
   "keywords": ["node", "express", "static", "fs", "body-parser", "process"]
 }
