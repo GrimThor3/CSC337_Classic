@@ -29,7 +29,7 @@ app.get('/', function (req, res) {
 		let email = req.query.email;
 		let password = req.query.password;
 
-		let dir = 'public/users/' + escape(email);
+		let dir = '${__dirname}/public/users/' + escape(email);
 
 		if (!fs.existsSync(dir)) {
 			fs.mkdir(dir, { recursive: true }, function(err) {
@@ -37,16 +37,16 @@ app.get('/', function (req, res) {
 	 				throw err;
 	 			}
 	 		});
-	 		let dir2 = 'public/users/' + escape(email) + '/settings.txt';
+	 		let dir2 = '${__dirname}/public/users/' + escape(email) + '/settings.txt';
 	 		let contents = "Name: " + escape(name) + "\nPassword: " + escape(password) + "\nImage Source: img/noimg.png";
 	 		fs.writeFileSync(dir2, contents);
-	 		let dir3 = 'public/users/' + escape(email);
+	 		let dir3 = '${__dirname}/public/users/' + escape(email);
 	 		fs.mkdir(dir3, { recursive: true }, function (err) {
 	 			if (err) {
 	 				throw err;
 	 			}
 	 		});
-	 		let dir4 = 'public/users/' + escape(email) + '/status.txt';
+	 		let dir4 = '${__dirname}/public/users/' + escape(email) + '/status.txt';
 	 		fs.writeFileSync(dir4, "");
 		} else {
 			res.send("Incorrect creditentials");
@@ -57,14 +57,14 @@ app.get('/', function (req, res) {
 
 		console.log(email);
 
-		let settingPath = "public/users/" + escape(email) + "/settings.txt";
+		let settingPath = "${__dirname}/public/users/" + escape(email) + "/settings.txt";
 		if (fs.existsSync(settingPath)) {
 			let file = fs.readFileSync(settingPath, 'utf8');
 			let fileContents = file.split('\n');
 			if (fileContents[0].split(": ")[1] == password) {
 				let data = {};
 				data["image"] = fileContents[1].split(": ")[1];
-				let statusPath = 'public/users/' + escape(email) + '/status.txt';
+				let statusPath = '${__dirname}/public/users/' + escape(email) + '/status.txt';
 				data["status"] = fs.readFile(statusPath, function(err) {
 					if (err) {
 						throw err;
@@ -108,7 +108,7 @@ app.post('/', jsonParser, function(req, res) {
 	
 	let email = req.body.email;
 	let status = req.body.name;
-	let statusFile = 'public/users/' + escape(email) + "/status.txt";
+	let statusFile = '${__dirname}/public/users/' + escape(email) + "/status.txt";
 	fs.writeFile(statusFile, status, 'utf8', (function(err) {
 		if (err) {
 			throw err;
