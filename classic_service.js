@@ -114,7 +114,8 @@ app.post('/', jsonParser, function(req, res) {
 			throw err;
 		}
 	}));
-
+	
+	res.send(status);
 });
 
 app.listen(app.get('port'));
