@@ -13,7 +13,7 @@ const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 
 
-app.use(express.static(_dirname));
+app.use(express.static('public'));
 console.log('Web service started');
 
 // Sets port to either heroku port or 3000 (local host)
@@ -107,7 +107,7 @@ app.post('/', jsonParser, function(req, res) {
 		"Origin, X-Requested-With, Content-Typed, Accept");
 	
 	let email = req.body.email;
-	let status = req.body.name;
+	let status = req.body.status;
 	let statusFile = 'public/users/' + escape(email) + "/status.txt";
 	fs.writeFile(statusFile, status, 'utf8', (function(err) {
 		if (err) {
