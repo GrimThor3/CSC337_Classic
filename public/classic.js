@@ -140,7 +140,7 @@ window.onload = (function() {
 				'Accept': 'application/json',
 				'Content-Type': 'application/json'
 			},
-			body : status
+			body : JSON.stringify(message)
 		};
 		
 		let url = "https://csc337-classic.herokuapp.com?mode=status";
